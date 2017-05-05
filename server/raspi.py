@@ -1,7 +1,7 @@
 import socket, threading
 
-#IP = "139.59.79.157"
-IP = "0.0.0.0"
+IP = "139.59.59.215"
+#IP = "0.0.0.0"
 PORT = 3301
 BUFF = 50
 

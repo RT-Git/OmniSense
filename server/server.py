@@ -12,8 +12,10 @@ def changer(conn1, conn2):
 	while 1:
 		try:
 			with lck:
-				conn2.send(conn1.recv(1024))
-				print("some done")
+				masala = conn1.recv(1024)
+				if masala:
+					conn2.send(masala)
+				#print("some done")
 		except:
 			print("Threads Killed")
 			break
