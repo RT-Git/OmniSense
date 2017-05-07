@@ -15,7 +15,9 @@ def changer(conn1, conn2):
 				masala = conn1.recv(1024)
 				if masala:
 					conn2.send(masala)
-				#print("some done")
+				if masala == "EXIT":
+					print("Some thread closed")
+					break
 		except:
 			print("Threads Killed")
 			break
@@ -27,15 +29,12 @@ try:
 		print("Raspi Connecetd")
 		conn_phone, addr = s.accept()
 		print("Phone Connecetd")
-
 		t1 = threading.Thread(target = changer, args = (conn_raspi, conn_phone))
 		t2 = threading.Thread(target = changer, args = (conn_phone, conn_raspi))
-
 		t1.start()
 		t2.start()
 		t1.join()
 		t2.join()
-
 except KeyboardInterrupt:
 	s.close()
 	print (e)
